@@ -30,12 +30,25 @@ public class EmployeeController {
         }
     }
 
+    @PutMapping("employee/{index}")
+    public ResponseEntity updateEmployee(@PathVariable Integer index, @RequestBody Employee employee){
+        employees.set(index, employee);
+        return ResponseEntity.status(200).body(new MessageResult("update employee", 200));
+    }
+
+    @DeleteMapping("employee/{index}")
+    public ResponseEntity deleteEmployee(@PathVariable Integer index){
+        employees.remove(index);
+        return ResponseEntity.status(200).body(new MessageResult("delete employee!", 200));
+    }
+
     @GetMapping("employee/salary")
-    public ResponseEntity totalSalary(){
+    public ResponseEntity<MessageResult> totalSalary(){
         Integer total = 0;
 
         for(int i = 0; i > employees.size(); i++){
             total += i;
+            return ResponseEntity.status(200).body(new MessageResult("the total salary is :"+total, 200));
         }
         return ResponseEntity.status(200).body(new MessageResult("the total salary is :"+total, 200));
     }
