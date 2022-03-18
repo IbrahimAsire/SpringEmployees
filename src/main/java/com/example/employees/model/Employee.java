@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @Data
@@ -13,9 +14,9 @@ public class Employee {
     private String ID;
     @NotEmpty(message = "Name is empty!")
     private String name;
-    @NotEmpty(message = "Age is empty!")
+    @NotNull(message = "Age is empty!")
     private Integer age;
-    @NotEmpty(message = "Slary is empty!")
+    @NotNull(message = "Slary is empty!")
     private Double salary;
 
 }
